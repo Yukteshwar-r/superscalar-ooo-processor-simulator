@@ -14,17 +14,17 @@ A high-performance C++ architectural simulator that models a dynamic instruction
 ### Compilation
 Build the simulator using the optimized Makefile:
 
-make
+`make`
 
 ### Testing the Build
 Verify the simulator logic and timing output by running:
 
-make test
+`make test`
 
 ## ⚙️ Usage
 The simulator requires architectural parameters and a trace file as command-line arguments:
 
-./sim <ROB_SIZE> <IQ_SIZE> <WIDTH> <tracefile>
+`./sim <ROB_SIZE> <IQ_SIZE> <WIDTH> <tracefile>`
 
 * **ROB_SIZE**: Number of entries in the Reorder Buffer.
 * **IQ_SIZE**: Number of entries in the Issue Queue.
@@ -33,7 +33,7 @@ The simulator requires architectural parameters and a trace file as command-line
 ## 📂 Trace File Format
 The simulator reads trace files where each line represents a dynamic instruction in the following format:
 
-<PC> <operation_type> <dest_reg> <src1_reg> <src2_reg>
+`<PC> <operation_type> <dest_reg> <src1_reg> <src2_reg>`
 
 * **PC**: Program Counter (hexadecimal).
 * **operation_type**: 0 (1-cycle latency), 1 (2-cycle latency), or 2 (5-cycle latency).
