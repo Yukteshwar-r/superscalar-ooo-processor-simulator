@@ -30,6 +30,21 @@ The simulator requires architectural parameters and a trace file as command-line
 * **IQ_SIZE**: Number of entries in the Issue Queue.
 * **WIDTH**: Superscalar width (maximum instructions per stage per cycle).
 
+## 📂 Trace File Format
+The simulator reads trace files where each line represents a dynamic instruction in the following format:
+
+<PC> <operation_type> <dest_reg> <src1_reg> <src2_reg>
+
+* **PC**: Program Counter (hexadecimal).
+* **operation_type**: 0 (1-cycle latency), 1 (2-cycle latency), or 2 (5-cycle latency).
+* **dest_reg**: Destination register index (-1 if none).
+* **src1_reg**: First source register index (-1 if none).
+* **src2_reg**: Second source register index (-1 if none).
+
+Example line: ab120024 0 1 2 3 (Op Type 0, Dest: R1, Sources: R2, R3)
+
+
+
 ## 📊 Output Analysis
 The simulator provides a cycle-accurate trace of every instruction followed by aggregate results:
 
@@ -37,6 +52,6 @@ The simulator provides a cycle-accurate trace of every instruction followed by a
     * FE (Fetch), DE (Decode), RN (Rename), RR (Reg-Read), DI (Dispatch), IS (Issue), EX (Execute), WB (Writeback), RT (Retire).
 * **Processor Configuration**: Echoes the ROB size, IQ size, and pipeline width.
 * **Simulation Results**:
-    * **Dynamic Instruction Count**: Total number of instructions retired.
+    * **Dynamic Instruction Count**: Total number of retired instructions.
     * **Cycles**: Total clock cycles required to complete the trace.
-    * **Instructions Per Cycle (IPC)**: A measure of the processor's throughput.
+    * **Instructions Per Cycle (IPC)**: Throughput measurement (Instructions / Cycles).
